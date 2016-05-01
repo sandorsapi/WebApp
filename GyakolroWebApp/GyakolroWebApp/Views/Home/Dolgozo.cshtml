@@ -1,0 +1,38 @@
+﻿
+@{
+    ViewBag.Title = "Dolgozók";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div><h2 style="text-align: center; background-color: red;">@ViewBag.Hiba</h2></div>
+<h2>Dolgozók adatai</h2>
+<div>
+@using (Html.BeginForm("Dolgozo", "Home"))
+{
+    <div>
+    <table align="center" width="950">
+    <tr style="background-color: Green; font-size: small; vertical-align: bottom; text-align: center;">
+    <th>@Html.Label("Munkahely:")</th>
+    <th>@Html.Label("Dolgozó neve:")</th>
+    <th>@Html.Label("Email:")</th> 
+    <th>@Html.Label("Státusz:")</th>            
+    </tr>  
+    <tr>
+    <th><p>@ViewBag.mhNev</p></th>
+    <th><p>@ViewBag.dolgozoNev</p></th> 
+    <th><p>@ViewBag.email</p></th> 
+    <th><p>@ViewBag.statusz</p></th>      
+    </tr>  
+      
+    </table>             
+    </div>    
+}
+</div>
+<div style="text-align: right">
+@Html.ActionLink("Új felvitel", "DolgozoCreate", new { m_hely = ViewBag.mhNev })
+@Html.ActionLink("Módosítás", "DolgozoEdit", new { id = ViewBag.ID, nev = ViewBag.dolgozoNev })
+@Html.ActionLink("Törlés", "DolgozoDelete", new { id = ViewBag.ID })  
+</div>
+<div>
+@Html.ActionLink("Vissza", "Index", "ListaModel")
+</div>
+     

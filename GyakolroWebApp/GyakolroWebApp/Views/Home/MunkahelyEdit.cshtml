@@ -1,0 +1,19 @@
+﻿@{
+    ViewBag.Title = "Munkahely módosítása";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div><h2 style="text-align: center; background-color: red;">@ViewBag.Hiba</h2></div>
+<h2>Munkahely módosítása</h2>
+
+@using (Html.BeginForm("MunkahelyEdit", "Home"))
+{
+    @Html.Label("Munkahely neve:")
+    @Html.TextBox("nev", new { nev = ViewBag.nev })
+     <p>
+            <input type="submit" value="Módosítás" />
+    </p>
+}
+<div>
+    @Html.ActionLink("Vissza", "Index", "ListaModel")
+</div>
+

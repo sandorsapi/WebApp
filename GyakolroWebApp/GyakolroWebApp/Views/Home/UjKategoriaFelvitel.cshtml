@@ -1,0 +1,36 @@
+﻿@model GyakolroWebApp.Models.MunkahelyModel
+
+@{
+    ViewBag.Title = "Uj kategoria felvitel";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div><h2 style="text-align: center; background-color: red;">@ViewBag.Hiba</h2></div>
+<h2>Új kategoria felvitele</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>MunkahelyModel</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.munkahelyNev)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.munkahelyNev)
+            @Html.ValidationMessageFor(model => model.munkahelyNev)
+        </div>
+
+        <p>
+            <input type="submit" value="Felvitel" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Vissza", "Index", "ListaModel")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

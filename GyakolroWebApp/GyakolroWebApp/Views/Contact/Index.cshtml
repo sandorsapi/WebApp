@@ -1,0 +1,45 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    ViewBag.Title = "Kapcsolat";
+}
+
+<hgroup class="title">    
+    <h1>@ViewBag.Message</h1>
+</hgroup>
+
+<section class="contact">
+    <header>
+        <h3>Telefon</h3>
+    </header>
+    <p>
+        <span class="label">Mobil:</span>
+        <span>+36 20 423-4439</span>
+    </p>
+</section>
+
+<section class="contact">
+    <header>
+        <h3>Email</h3>
+    </header>
+    <p>
+        <span class="label">Személyes:</span>
+        <span>sandorsapi@gmail.com</span>
+    </p> 
+</section>
+
+<section class="contact">
+    <header>
+        <h3>Cím</h3>
+    </header>
+    <p>
+        1165 Budapest Újszász u 45/B p. ép. 1/102
+    </p>
+</section>
+<br />
+<div>
+@Html.ActionLink("Vissza", "Index", "Home")
+</div>

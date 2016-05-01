@@ -1,0 +1,98 @@
+﻿
+@{
+    ViewBag.Title = "Adatlista";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div><h2 style="text-align: center; background-color: red;">@ViewBag.Hiba</h2></div>
+<h2>Adatok listája</h2>
+
+<div>
+@Html.ActionLink("Új kategória felvitele", "UjKategoriaFelvitel", "Home")
+</div>
+<div>
+<ul type="square">
+@foreach (var ml in ViewBag.lista)
+{
+<li>
+    
+        @Html.ActionLink("Cég név:", "Munkahely", "Home", new { id = ml.mhID, szID = ml.szuloID, st = ml.mhstatusz,  neve = ml.munkahelyNev}, null)
+        @ml.munkahelyNev
+        @foreach (var dl in ViewBag.dlista)
+        {
+            if (dl != null)
+            {
+                if (dl.mh_id == ml.mhID)
+                {
+                            <ul type="circle">
+                            <li>
+                            @Html.ActionLink("Dolgozó név:", "Dolgozo", "Home", new { id = ml.mhID, dNev = dl.dolgozoNev, mNev = ml.munkahelyNev }, null)                                                       
+                            @dl.dolgozoNev
+                            </li>
+                            </ul>
+                }
+            }
+        }
+        <ul type="square">
+        @foreach (var al in ViewBag.allista)
+        {
+            if (al != null)
+            {
+                if (al.szuloID == ml.mhID)
+                {
+                    <ul>
+                    <li>
+                    @Html.ActionLink("Cég név:", "Munkahely", "Home", new { id = al.mhID, szID = al.szuloID, st = al.mhstatusz, neve = al.munkahelyNev }, null)
+                    @al.munkahelyNev                    
+                    @foreach (var gyAl in ViewBag.GyAllista)
+                    {
+                        if (al != null)
+                        {
+                            if (gyAl.szuloID == al.mhID)
+                            {
+                       <ul>
+                       <li>
+                            @Html.ActionLink("Cég név:", "Munkahely", "Home", new { id = gyAl.mhID, szID = gyAl.szuloID, st = gyAl.mhstatusz, neve = gyAl.munkahelyNev }, null)
+                            @gyAl.munkahelyNev
+                       </li>
+                       </ul>
+                            }
+                        }
+                    }
+                    </li>
+                    </ul>
+                    
+                    foreach (var dl in ViewBag.dlista)
+                    {
+                        if (dl != null)
+                        {
+                            if (dl.mh_id == al.mhID)
+                            {
+                            <ul type="circle">
+                            <li>
+                            @Html.ActionLink("Dolgozó név:", "Dolgozo", "Home", new { id = al.mhID, dNev = dl.dolgozoNev }, null)                                                        
+                            @dl.dolgozoNev
+                            </li>
+                            </ul>
+                            }
+                        }
+                    }                                                        
+                }               
+            }
+        } 
+        </ul>          	
+    </li> 
+}          
+</ul>      
+</div>
+
+<div>
+@Html.ActionLink("Vissza", "Index", "Home")
+</div>
+<div>
+@using (Html.BeginForm("Index", "ListaModel"))
+{
+    @*<p style="color: #FFFF00">@ViewBag.name</p>*@
+    <p style="color: #FFFF00">@ViewBag.id</p>
+}
+
+</div>

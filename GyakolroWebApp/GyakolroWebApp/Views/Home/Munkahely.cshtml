@@ -1,0 +1,38 @@
+﻿
+@{
+    ViewBag.Title = "Munkahelyek";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div><h2 style="text-align: center; background-color: red;">@ViewBag.Hiba</h2></div>
+<h2>Munkahelyek adatai</h2>
+<div>
+@using (Html.BeginForm("Munkahely", "Home"))
+{
+    <div>
+    <table align="center" width="950">
+    <tr style="background-color: Green; font-size: small; vertical-align: bottom; text-align: center;">
+    <th>@Html.Label("ID:")</th>
+    <th>@Html.Label("Főkategória:")</th>
+    <th>@Html.Label("Munkahely neve:")</th>
+    <th>@Html.Label("Státusz:")</th>             
+    </tr>
+    <tr>
+    <th><p>@ViewBag.Id</p></th> 
+    <th><p>@ViewBag.mhnev</p></th>
+    <th><p>@ViewBag.neve</p></th>      
+    <th><p>@ViewBag.st</p></th>  
+    </tr>  
+    </table>             
+    </div>   
+}
+</div>
+     
+<div style="text-align: right">
+@Html.ActionLink("Új dolgozó felvitele", "DolgozoCreate", new { m_hely = ViewBag.neve })
+@Html.ActionLink("Új felvitel", "MunkahelyCreate", new { mnev = ViewBag.neve })
+@Html.ActionLink("Módosítás", "MunkahelyEdit", new { id = ViewBag.Id, nev = ViewBag.neve })
+@Html.ActionLink("Törlés", "MunkahelyDelete", new { id = ViewBag.ID })   
+</div>
+<div>
+@Html.ActionLink("Vissza", "Index", "ListaModel")
+</div>

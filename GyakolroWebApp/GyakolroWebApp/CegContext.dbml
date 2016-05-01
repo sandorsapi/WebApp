@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Ceg" Class="CegContextDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=SASA-LAPTOP-PC\SQLEXPRESS;Initial Catalog=Ceg;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="CegConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Munkahely" Member="Munkahelies">
+    <Type Name="Munkahely">
+      <Column Name="mhID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="munkahelyNev" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="szuloID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="mhstatusz" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Association Name="Munkahely_Dolgozo" Member="Dolgozos" ThisKey="mhID" OtherKey="mh_id" Type="Dolgozo" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Dolgozo" Member="Dolgozos">
+    <Type Name="Dolgozo">
+      <Column Name="dolgozoID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="dolgozoNev" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="email" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="dstatusz" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="mh_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Munkahely_Dolgozo" Member="Munkahely" ThisKey="mh_id" OtherKey="mhID" Type="Munkahely" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+</Database>
